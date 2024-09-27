@@ -1,0 +1,14 @@
+{
+  "name": "datastructure",
+  "version": "1.0.0",
+  "main": "nodeBMI.js",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
