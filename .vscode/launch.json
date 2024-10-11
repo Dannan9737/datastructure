@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\nodeBMI.js",
+            "program": "${file}",
             "console": "integratedTerminal"
          }
     ]
