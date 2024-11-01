@@ -54,7 +54,7 @@ class Life{
         count += getStatusAt(row, col-1);
 
         count += getStatusAt(row, col+1); 
-        
+
         count += getStatusAt(row+1, col-1); 
         count += getStatusAt(row+1, col); 
         count += getStatusAt(row+1, col+1);      
