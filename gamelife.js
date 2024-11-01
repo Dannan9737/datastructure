@@ -67,15 +67,64 @@ class Life{
             return this.grid[row][col];
         }
     }
+    draw = function(_canvas){
+        var canvas = docment.getElementsById(_canvas).getContext("2d")
+        var size=Math.min(canvas.canvas.height/this.row,canvas.canvas.weight/this.col)
+        for(var _row=0;_row<row;_row++){
+            for(var _col=0;_col<col;_col++){
+                //ar2d[_row][_col]=>0,1
+                if(this.grid[_row][_col]==live){
+                    canvas.fillStyle="#ff0000"
+                }else{
+                    canvas.fillStyle="#ffffff"
+                }
+                canvas.fillRect(_col*this.size,_row*this.size,this.size,this.size);
+                canvas.strokeRect(_col*this.size,_row*this.size,this.size,this.size);
+            }
+        }
+    }
+    drawPoint=function(_canvas,_row,_col){
+        var canvas=document.getElementsById(_canvas).getContext("2d");
+        //this.size=Math.min(canvas.canvas.height/this.row, canvas.canvas.width/this.col);
+        if(this.grid[_row][_col]==Live){
+            canvas.fillStyle="#ff0000"
+        }else{
+            canvas.fillStyle="#ffffff"
+        }
+        canvas.fillRect(_col*this.size,_row*this.size,this.size,this.size);
+        canvas.strokeRect(_col*this.size,_row*this.size,this.size,this.size);
+    }
 }
 
-// Life.prototype.update= function(){
+ //Life.prototype.update= function(){
 
-// }
+ //}
 
+function tonext(){
+    myGame.update();
+    myGame.draw("map")
+}
 
-var myGame = new Life(10,10);
+function mouseClick(event){
+    var _row = Math.floor(event.offsetY/myGame.size);
+    var _col = Math.floor(event.offsetX/myGame.size);
+    //    if(myGame.getStatusAt(_row,_col)==Live){
+//     myGame.grid[_row][_col]=Dead;
+//    }else{
+//     myGame.grid[_row][_col]=Live;
+//    }
+
+   //myGame.grid[_row][_col] = (myGame.getStatusAt(_row,_col)==Live) ? Dead : Live;
+    myGame.grid[_row][_col] =  Number(!myGame.getStatusAt(_row,_col));
+    //    if() else ...
+//    ()? :
+    myGame.drawPoint("map",_row,_col);
+}
+
+var myGame = new Life(100,100);
 var myGame2 = new Life(100,100);
 
 myGame.initialize();
-myGame.update();
+myGame.draw("map");
+
+var runnng = setTimeout(tonext,1000)
